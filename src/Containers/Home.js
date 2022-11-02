@@ -12,12 +12,12 @@ import './Home.css';
 export default function Home() {
   const containerStyles = {
     display: 'flex',
-    gap: 15,
+    gap: 40,
     flexDirection: 'row',
     flexWrap: 'wrap'
   }
 
-  const { cardList } = useContext(CardContext);
+  const { cardList, sortDescending } = useContext(CardContext);
 
   const [show, setShow] = useState(false);
   //const [showAlert, setShowAlert] = useState(false);
@@ -34,14 +34,15 @@ export default function Home() {
   //   handleShowAlert();
   // }, [cardList]);
 
+
   return (
     <>
       <div className="relative">
-        <SortButton className="navitem" name={SORTING_CONTROLS.CREATED} />
-        <SortButton className="navitem" name={SORTING_CONTROLS.RATE} />
-        <SortButton className="navitem" name={SORTING_CONTROLS.ALPHABET} />
-        <SortButton className="navitem" name={SORTING_CONTROLS.LASTUPDATED} />
-        <ClearButton />
+        <SortButton className="navitem" name={SORTING_CONTROLS.CREATED} sortButtonClick={() => sortDescending('createdAt')} />
+        <SortButton className="navitem" name={SORTING_CONTROLS.RATE} sortButtonClick={() => sortDescending('exchangeRate')} />
+        <SortButton className="navitem" name={SORTING_CONTROLS.ALPHABET} sortButtonClick={() => sortDescending('fromRate')} />
+        <SortButton className="navitem" name={SORTING_CONTROLS.LASTUPDATED} sortButtonClick={() => sortDescending('lastUpdated')} />
+        <ClearButton styles={{ borderColor: 'red', marginLeft: '347px' }} />
       </div>
       {/* <Alert show={showAlert} variant="success">
         New Card Created!

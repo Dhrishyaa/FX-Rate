@@ -1,7 +1,8 @@
 .relative {
-    display: flex;
-    padding: 10px;
-    position: relative;
-    background-color: #fff;
-    margin: 10px;
+  display: flex;
+  padding: 10px 0px;
+  gap: 20px;
+  position: relative;
+  background-color: #fff;
+  margin: 10px 0px;
 }

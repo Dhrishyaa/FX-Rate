@@ -1,9 +1,9 @@
 export const SORTBY = "SORT BY";
 export const SORTING_CONTROLS = {
-    CREATED: "CREATED",
-    RATE: "RATE",
-    ALPHABET: "ALPHABETICALLY",
-    LASTUPDATED: "LAST UPDATED"
+  CREATED: "CREATED",
+  RATE: "RATE",
+  ALPHABET: "ALPHABETICALLY",
+  LASTUPDATED: "LAST UPDATED"
 }
 export const CLEAR = "CLEAR ALL";
 export const BASE_URL = "https://api.exchangerate.host/";
