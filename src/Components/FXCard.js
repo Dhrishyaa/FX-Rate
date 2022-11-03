@@ -2,9 +2,6 @@ import React, { useContext, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import HeightIcon from '@mui/icons-material/Height';
-import RefreshIcon from '@mui/icons-material/Refresh';
-import HighlightOffSharpIcon from '@mui/icons-material/HighlightOffSharp';
 import { CardContext } from '../Contexts/CardContext';
 import CardFields from './CardFields';
 import { CgArrowsVAlt } from 'react-icons/cg';
@@ -13,12 +10,11 @@ import { IoMdCloseCircleOutline, IoMdRefresh } from 'react-icons/io';
 export default function FXCard(props) {
   const { cardDetails } = props;
   const { updateCard, deleteCard } = useContext(CardContext);
-  //console.log("cardDetails "+ JSON.stringify(cardDetails));
   const textStyles = {
     backgroundColor: cardDetails.color,
     border: cardDetails.color,
-    margin: '20px 0px 0px 15px',
-    width: '230px',
+    margin: '20px 0px 0px -5px',
+    width: '220px',
     height: '45px',
     borderRadius: '6px',
     padding: '10px'
@@ -30,6 +26,11 @@ export default function FXCard(props) {
   const actionButtonStyles = {
     position: 'relative',
     float: 'right'
+  }
+  const labelStyles = {
+    fontSize: '25px',
+    fontFamily: '-webkit-body',
+    fontWeight: 'bold'
   }
 
   const [amount, setAmount] = useState(1);
@@ -63,32 +64,31 @@ export default function FXCard(props) {
         </div>
         <div style={containerStyles}>
           <div>
-            <Typography style={{
-              fontSize: '25px',
-              fontFamily: '-webkit-body',
-              fontWeight: 'bold'
-            }} color={cardDetails.color}>
+            <Typography style={labelStyles} color={cardDetails.color}>
               {cardDetails.fromRate}
             </Typography>
-            <CgArrowsVAlt />
+            <CgArrowsVAlt size='80px' color='#7c7c7c' style={{
+              color: "#7c7c7c",
+              strokeWidth: "1px",
+              stroke: "white",
+              marginTop: '20px'
+            }} />
             <Typography style={{
+              ...labelStyles,
               position: "absolute",
-              marginTop: "110px",
-              fontSize: '25px',
-              fontFamily: '-webkit-body',
-              fontWeight: 'bold'
+              margin: "25px 0px 0px 10px"
             }} color={cardDetails.color}>
               {cardDetails.toRate}
             </Typography>
           </div>
           <div style={{ marginTop: '88px', marginLeft: '-25px' }}>{cardDetails.exchangeRate}</div>
           <div>
-            <CardFields styles={{ ...textStyles, margin: '47px 0px 0px 15px' }} amount={fromAmount} onChangeAmount={handleFromAmountChange} />
+            <CardFields styles={{ ...textStyles, marginTop: '47px' }} amount={fromAmount} onChangeAmount={handleFromAmountChange} />
             <CardFields styles={textStyles} amount={toAmount} onChangeAmount={handleToAmountChange} />
           </div>
         </div>
         <div style={{ position: 'relative', float: 'right', margin: '15px 0px 10px' }}>
-          <Typography style={{marginLeft: '55px', color:'#7c7c7c'}}>
+          <Typography style={{ marginLeft: '55px', color: '#7c7c7c' }}>
             Last Updated
           </Typography>
           <Typography>

@@ -15,6 +15,8 @@ const CardContextProvider = (props) => {
     lastUpdated: "1-NOV-2022 23:0:20"
   }]);
 
+  const [sortType, setSortType] = useState("asc");
+
   const formatDate = (date) => {
     return (
       [
@@ -60,18 +62,25 @@ const CardContextProvider = (props) => {
     setCardList([]);
   }
 
-  const sortAscending = (key) => (
-    setCardList([...cardList].sort((a, b) =>
-      a[key] > b[key] ? -1 : 1,
-    )))
-
-  const sortDescending = (key) => (
-    setCardList([...cardList].sort((a, b) =>
-      a[key] > b[key] ? -1 : 1,
-    )))
+  const sorting = (key) => {
+    if (sortType === "asc") {
+      setCardList([...cardList].sort((a, b) =>
+        a[key] > b[key] ? 1 : -1,
+      ))
+      console.log(sortType);
+      setSortType("desc");
+    }
+    if (sortType === "desc") {
+      setCardList([...cardList].sort((a, b) =>
+        a[key] > b[key] ? -1 : 1,
+      ))
+      console.log(sortType);
+      setSortType("asc");
+    }
+  }
 
   return (
-    <CardContext.Provider value={{ cardList, addCard, deleteCard, updateCard, formatDate, deleteAllCards, sortDescending }}>
+    <CardContext.Provider value={{ cardList, addCard, deleteCard, updateCard, formatDate, deleteAllCards, sorting, sortType }}>
       {props.children}
     </CardContext.Provider>
   )
